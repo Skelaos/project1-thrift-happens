@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -181,4 +181,28 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+.NavBar {
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.ItemsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.ItemCard {
+  border: 2px solid white;
+  width: 30%;
+}
+
+.OutOfStock {
+  color: red;
+  font-weight: bolder;
 }

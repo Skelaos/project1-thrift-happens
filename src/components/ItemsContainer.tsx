@@ -5,6 +5,7 @@ export default function ItemsContainer({
   data,
   itemInfo,
   handleChangeQuantity,
+  handleAddToCheckout,
 }: ItemsContainerProps) {
   return (
     <div className="ItemsContainer">
@@ -21,6 +22,7 @@ export default function ItemsContainer({
             handleChangeQuantity={(delta: number) =>
               handleChangeQuantity(item.id, delta)
             }
+            handleAddToCheckout={handleAddToCheckout}
           />
         );
       })}
