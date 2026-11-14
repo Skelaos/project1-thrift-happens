@@ -22,7 +22,7 @@ export default function CheckoutCard({
   return (
     <div className="CheckoutCard">
       <h2>{name}</h2>
-      <img src={image} alt="" height="300px" />
+      <img src={image} alt="" height="180px" />
       <p>Price: {price}</p>
       <p>Quantity: {itemQuantity}</p>
       <p>Total: {total}</p>

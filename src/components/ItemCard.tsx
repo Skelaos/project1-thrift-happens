@@ -22,7 +22,7 @@ export default function ItemCard({
   return (
     <div className="ItemCard">
       <h2>{itemInfo.name}</h2>
-      <img src={image} height="150px" />
+      <img src={image} height="180px" />
       <p>
         <b>Fit:</b> {fit}
       </p>

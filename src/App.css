@@ -183,11 +183,14 @@
   }
 }
 
+/*MY PROJECT CSS*/
+/*Styling for navigation bar*/
 .NavBar {
   background-color: white;
   width: 100.3%;
 }
 
+/*Centers Item Cards and Wraps Rows*/
 .ItemsContainer {
   display: flex;
   flex-direction: row;
@@ -199,35 +202,39 @@
   padding: 30px 0px;
 }
 
+/*Styling for Individual Item Cards*/
 .ItemCard {
   border: 2px solid white;
-  width: 30%;
+  width: 20%;
   padding: 15px;
   box-sizing: border-box;
 }
 
+/*Highlights Articles that are Out of Stock*/
 .OutOfStock {
   color: red;
   font-weight: bolder;
 }
 
+/*Styling for Main Checkout Container*/
 .CheckoutContainer {
   border: 2px solid white;
   width: 100%;
   padding: 30px 0px;
 }
 
+/*Centers the Checkout Total and Empty Checkout Button*/
 .EmptyCheckout {
   display: flex;
   padding-bottom: 30px;
   flex-direction: column;
   align-items: center;
 }
-
 .EmptyCheckout button {
   width: 30%;
 }
 
+/*Centers Checkout Cards and Wraps Rows*/
 .Checkout {
   display: flex;
   flex-direction: row;
@@ -237,7 +244,10 @@
   gap: 20px;
 }
 
+/*Styling for Individual Checkout Cards*/
 .CheckoutCard {
   border: 2px solid white;
-  width: 30%;
+  width: 20%;
+  padding: 15px;
+  box-sizing: border-box;
 }
