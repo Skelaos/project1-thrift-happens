@@ -21,8 +21,8 @@ export default function CheckoutCard({
 }: CheckoutCardProps) {
   return (
     <div className="CheckoutCard">
-      <h2>{name}</h2>
       <img src={image} alt="" height="180px" />
+      <h2>{name}</h2>
       <p>Price: {price}</p>
       <p>Quantity: {itemQuantity}</p>
       <p>Total: {total}</p>

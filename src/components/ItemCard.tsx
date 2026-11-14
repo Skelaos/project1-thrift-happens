@@ -21,8 +21,8 @@ export default function ItemCard({
 }: ItemCardProps) {
   return (
     <div className="ItemCard">
-      <h2>{itemInfo.name}</h2>
       <img src={image} height="180px" />
+      <h2>{itemInfo.name}</h2>
       <p>
         <b>Fit:</b> {fit}
       </p>
