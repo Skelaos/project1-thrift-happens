@@ -29,7 +29,7 @@ export default function CheckoutContainer({
           ) : (
             ""
           )}
-          {checkoutData.length > 0
+          {checkoutData.length > 0 //Calculates the total by adding together all other totals, rounded to two decimal points.
             ? `Total: $${checkoutData.reduce((acc, article) => acc + article.total, 0).toFixed(2)}`
             : "CHECKOUT EMPTY"}
         </div>

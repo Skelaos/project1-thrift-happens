@@ -36,7 +36,7 @@ export interface CheckoutArticle {
 
 export default function ThriftHappensApp({ data }: ItemData) {
   //States
-  //ItemInfo state to store...
+  //Stores each article's currently selected quantity and remaining available stock.
   const [itemInfo, setItemInfo] = useState<ItemInfo[]>(
     data.map((item: ClothingProduct) => ({
       id: item.id,
@@ -46,17 +46,18 @@ export default function ThriftHappensApp({ data }: ItemData) {
       itemQuantity: item.itemQuantity,
     })),
   );
-
+  //Stores the articles currently added to the checkout.
   const [checkoutArticle, setCheckoutArticle] = useState<CheckoutArticle[]>([]);
 
   //Handlers
-  //Handler for the plus and minus buttons
+  //Handles the plus and minus buttons for the item quantity selection.
   function handleChangeQuantity(id: number, delta: number) {
     setItemInfo((prevData) => {
       return prevData.map((info) =>
         info.id === id
           ? {
               ...info,
+              //A guard to prevent the selected quantity from going under zero or over the available stock.
               itemQuantity: Math.min(
                 Math.max(info.itemQuantity + delta, 0),
                 info.quantity,
@@ -67,13 +68,16 @@ export default function ThriftHappensApp({ data }: ItemData) {
     });
   }
 
+  //Adds selected articles to checkout while also updating available stock.
   function handleAddToCheckout(checkoutArticle: CheckoutArticle) {
+    //A guard to prevent adding zero articles or more articles than are available in stock.
     if (
       checkoutArticle.itemQuantity <= 0 ||
       checkoutArticle.itemQuantity > checkoutArticle.quantity
     ) {
       return;
     }
+    //Adjusts available stock and resets the selected quantity to zero after adding to checkout.
     setItemInfo((prevData) => {
       return prevData.map((info) =>
         info.id === checkoutArticle.articleId
@@ -89,13 +93,12 @@ export default function ThriftHappensApp({ data }: ItemData) {
       );
     });
     setCheckoutArticle((prevArticles) => {
-      if (checkoutArticle.itemQuantity <= 0) {
-        return prevArticles;
-      }
+      //Checks if the article already exists in the checkout.
       const inCheckout = prevArticles.find(
         (article) => article.articleId === checkoutArticle.articleId,
       );
       if (inCheckout) {
+        //Updates the existing checkout entry to prevent duplication.
         return prevArticles.map((article) => {
           if (article.articleId === checkoutArticle.articleId) {
             const newQuantity =
@@ -103,17 +106,19 @@ export default function ThriftHappensApp({ data }: ItemData) {
             return {
               ...article,
               itemQuantity: newQuantity,
+              //Updates to total whenever the quantities are adjusted.
               total: newQuantity * article.price,
             };
           }
           return article;
         });
       }
+      //If there is no existing matching checkout entry, creates a new one.
       return [...prevArticles, checkoutArticle];
     });
   }
 
-  //Handler for removing one from checkout
+  //Removes an article from the checkout and restores the original stock quantity.
   function handleRemoveFromCheckout(
     id: string,
     articleId: number,
@@ -129,11 +134,13 @@ export default function ThriftHappensApp({ data }: ItemData) {
           : info,
       );
     });
+    //Removes the checkout entry according to its unique id.
     setCheckoutArticle((prevArticles) => {
       return prevArticles.filter((item) => item.id !== id);
     });
   }
-  //Handler for emptying checkout
+
+  //Empties the entire checkout and restores all original stock quantities.
   function handleEmptyCheckout(checkoutData: CheckoutArticle[]) {
     checkoutData.forEach((article) => {
       handleRemoveFromCheckout(

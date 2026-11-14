@@ -46,7 +46,7 @@ export default function ItemCard({
       <span> {itemInfo.itemQuantity} </span>
       <button onClick={() => handleChangeQuantity(1)}>+</button>
       <br />
-      <button
+      <button //Sends article information and total to the checkout.
         className={itemInfo.quantity === 0 ? "OutOfStock" : ""}
         disabled={itemInfo.quantity === 0}
         onClick={() =>

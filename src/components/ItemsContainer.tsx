@@ -10,8 +10,9 @@ export default function ItemsContainer({
   return (
     <div className="ItemsContainer">
       {data.map((item) => {
+        //Finds matching article information for each item if it exists
         const info = itemInfo.find((information) => information.id === item.id);
-
+        //Skips articles that have no match.
         if (!info) return null;
 
         return (

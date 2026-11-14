@@ -26,7 +26,7 @@ export default function CheckoutCard({
       <p>Price: {price}</p>
       <p>Quantity: {itemQuantity}</p>
       <p>Total: {total}</p>
-      <button
+      <button //Removes this article from the checkout and restores original article stock quantity.
         onClick={() => handleRemoveFromCheckout(id, articleId, itemQuantity)}
       >
         Remove
