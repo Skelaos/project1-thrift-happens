@@ -185,7 +185,7 @@
 
 .NavBar {
   background-color: white;
-  margin-bottom: 20px;
+  width: 100.3%;
 }
 
 .ItemsContainer {
@@ -195,14 +195,49 @@
   justify-content: center;
   gap: 20px;
   width: 100%;
+  border: 2px solid white;
+  padding: 30px 0px;
 }
 
 .ItemCard {
   border: 2px solid white;
   width: 30%;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .OutOfStock {
   color: red;
   font-weight: bolder;
+}
+
+.CheckoutContainer {
+  border: 2px solid white;
+  width: 100%;
+  padding: 30px 0px;
+}
+
+.EmptyCheckout {
+  display: flex;
+  padding-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EmptyCheckout button {
+  width: 30%;
+}
+
+.Checkout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.CheckoutCard {
+  border: 2px solid white;
+  width: 30%;
 }
